@@ -1,0 +1,80 @@
+package com.example.movieapp.data.remote.dto
+
+import com.example.movieapp.domain.model.MovieDetails
+
+data class MovieDetailsDto(
+    val adult: Boolean,
+    val backdropPath: String,
+    val belongsToCollection: Any,
+    val budget: Int,
+    val genres: List<Genre>,
+    val homepage: String,
+    val id: Int,
+    val imdbId: String,
+    val originCountry: List<String>,
+    val originalLanguage: String,
+    val originalTitle: String,
+    val overview: String,
+    val popularity: Double,
+    val posterPath: String,
+    val productionCompanies: List<ProductionCompany>,
+    val productionCountries: List<ProductionCountry>,
+    val releaseDate: String,
+    val revenue: Int,
+    val runtime: Int,
+    val spokenLanguages: List<SpokenLanguage>,
+    val status: String,
+    val tagline: String,
+    val title: String,
+    val video: Boolean,
+    val voteAverage: Double,
+    val voteCount: Int
+)
+
+//val adult: Boolean,
+//val backdropPath: String,
+//val budget: Int,
+//val genres: List<Genre>,
+//val homepage: String,
+//val id: Int,
+//val imdbId: String,
+//val originCountry: List<String>,
+//val originalLanguage: String,
+//val originalTitle: String,
+//val overview: String,
+//val popularity: Double,
+//val posterPath: String,
+//val productionCompanies: List<ProductionCompany>,
+//val releaseDate: String,
+//val runtime: Int,
+//val status: String,
+//val tagline: String,
+//val title: String,
+//val voteAverage: Double,
+//val voteCount: Int
+
+fun MovieDetailsDto.toMovieDetails(): MovieDetails {
+    return MovieDetails(
+        adult = adult,
+        backdropPath = backdropPath,
+        budget = budget,
+        genres = genres,
+        homepage = homepage,
+        id = id,
+        imdbId = imdbId,
+        originCountry = originCountry,
+        originalLanguage = originalLanguage,
+        originalTitle = originalTitle,
+        overview = overview,
+        popularity = popularity,
+        posterPath = posterPath,
+//        productionCompanies = productionCompanies,
+        releaseDate = releaseDate,
+        runtime = runtime,
+        status = status,
+        tagline = tagline,
+        title = title,
+        voteAverage = voteAverage,
+        voteCount = voteCount
+    )
+}
