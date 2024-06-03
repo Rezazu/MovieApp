@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.movieapp.domain.model.Movie
-import com.example.movieapp.ui.theme.MovieAppTheme
+import com.example.movieapp.presentation.ui.theme.MovieAppTheme
 
 @Composable
 fun MovieCard(
@@ -62,7 +62,6 @@ fun PreviewMovieCard(modifier: Modifier = Modifier) {
                     posterPath = "",
                     releaseDate = "2012-01-02",
                     title = "Avengers"
-
                 )
         ) {
 

@@ -7,8 +7,9 @@ import com.example.movieapp.domain.model.MovieDetails
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
+import javax.inject.Inject
 
-class GetMovieById(
+class GetMovieById @Inject constructor(
     private val repository: MovieRepository
 ) {
     operator fun invoke(movie_id: String): kotlinx.coroutines.flow.Flow<Resource<MovieDetails>> = flow {

@@ -19,9 +19,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.movieapp.presentation.Screen
+import com.example.movieapp.presentation.movie_detail.MovieDetailScreen
 import com.example.movieapp.presentation.movie_list.MovieListScreen
 import com.example.movieapp.presentation.movie_list.MovieListViewModel
-import com.example.movieapp.ui.theme.MovieAppTheme
+import com.example.movieapp.presentation.ui.theme.MovieAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,6 +44,11 @@ class MainActivity : ComponentActivity() {
                             val viewModel: MovieListViewModel = hiltViewModel()
                             val movies = viewModel.movies.collectAsLazyPagingItems()
                             MovieListScreen(movies, navController)
+                        }
+                        composable(
+                            route = Screen.MovieDetailScreen.route + "/{movie_id}"
+                        ) {
+                            MovieDetailScreen()
                         }
                     }
                 }

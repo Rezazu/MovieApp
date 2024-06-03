@@ -56,7 +56,7 @@ data class MovieDetailsDto(
 fun MovieDetailsDto.toMovieDetails(): MovieDetails {
     return MovieDetails(
         adult = adult,
-        backdropPath = backdrop_path,
+        backdropPath = "https://image.tmdb.org/t/p/original/$backdrop_path",
         budget = budget,
         genres = genres,
         homepage = homepage,
@@ -67,7 +67,7 @@ fun MovieDetailsDto.toMovieDetails(): MovieDetails {
         originalTitle = original_title,
         overview = overview,
         popularity = popularity,
-        posterPath = poster_path,
+        posterPath = "https://image.tmdb.org/t/p/original/$poster_path",
 //        productionCompanies = productionCompanies,
         releaseDate = release_date,
         runtime = runtime,

@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.paging.compose.LazyPagingItems
 import com.example.movieapp.domain.model.Movie
+import com.example.movieapp.presentation.Screen
 
 @Composable
 fun MovieListScreen(
@@ -37,10 +38,10 @@ fun MovieListScreen(
                .fillMaxSize()
         ) {
             items(count = movies.itemCount) { it ->
-                movies[it]?.let {
+                movies[it]?.let { movie ->
                     MovieCard(
-                        movie = it,
-                        onItemClick = {}
+                        movie = movie,
+                        onItemClick = { navController.navigate(Screen.MovieDetailScreen.route + "/${movie.id}")}
                     )
                 }
             }
