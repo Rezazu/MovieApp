@@ -1,5 +1,7 @@
 package com.example.movieapp.common
 
+import androidx.compose.ui.unit.dp
+
 object Constant {
 
     const val BASE_URL = "https://api.themoviedb.org/3/"

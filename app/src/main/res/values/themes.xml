@@ -2,4 +2,5 @@
 <resources>
 
     <style name="Theme.MovieApp" parent="android:Theme.Material.Light.NoActionBar" />
+<!--    <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight">-->
 </resources>

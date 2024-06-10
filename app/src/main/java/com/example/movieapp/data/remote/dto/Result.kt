@@ -35,7 +35,7 @@ fun com.example.movieapp.data.remote.dto.Result.toMovies(): Movie {
         id = id,
         originalLanguage = original_language,
         originalTitle = original_title,
-        posterPath = poster_path,
+        posterPath = "https://image.tmdb.org/t/p/original/$poster_path",
         releaseDate = release_date,
         title = title
     )

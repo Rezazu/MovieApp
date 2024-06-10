@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
-    private val moviesUseCases: MoviesUseCases
+    private val moviesUseCases: MoviesUseCases,
 ): ViewModel() {
 
     val movies = moviesUseCases.getMovies().cachedIn(viewModelScope)
