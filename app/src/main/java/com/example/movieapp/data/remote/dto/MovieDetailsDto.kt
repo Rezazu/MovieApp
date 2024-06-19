@@ -68,7 +68,7 @@ fun MovieDetailsDto.toMovieDetails(): MovieDetails {
         overview = overview,
         popularity = popularity,
         posterPath = "https://image.tmdb.org/t/p/original/$poster_path",
-//        productionCompanies = productionCompanies,
+        productionCompanies = production_companies,
         releaseDate = release_date,
         runtime = runtime,
         status = status,

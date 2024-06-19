@@ -42,7 +42,7 @@ object AppModule {
     ): MoviesUseCases {
         return MoviesUseCases(
             getMovies = GetMovies(movieRepository),
-            getMovieById = GetMovieById(movieRepository)
+            getMovieById = GetMovieById(movieRepository),
         )
     }
 }

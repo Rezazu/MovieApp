@@ -1,4 +1,4 @@
-package com.example.movieapp.presentation.movie_list
+package com.example.movieapp.presentation.movie_list.component
 
 import android.annotation.SuppressLint
 import android.hardware.lights.Light

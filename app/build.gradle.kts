@@ -22,6 +22,7 @@ android {
         }
     }
 
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -51,6 +52,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -61,6 +64,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+//    implementation(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -87,6 +91,11 @@ dependencies {
     kapt ("com.google.dagger:hilt-android-compiler:2.50")
     kapt ("androidx.hilt:hilt-compiler:1.2.0")
     implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    //Room
+    val room_version = "2.5.1"
+    implementation ("androidx.room:room-ktx:$room_version")
+    implementation ("androidx.room:room-runtime:$room_version")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

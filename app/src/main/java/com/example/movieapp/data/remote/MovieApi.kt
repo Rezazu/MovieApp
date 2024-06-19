@@ -3,7 +3,6 @@ package com.example.movieapp.data.remote
 import com.example.movieapp.common.Constant.API_KEY
 import com.example.movieapp.data.remote.dto.MovieDetailsDto
 import com.example.movieapp.data.remote.dto.MovieDto
-import com.example.movieapp.domain.model.Movie
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

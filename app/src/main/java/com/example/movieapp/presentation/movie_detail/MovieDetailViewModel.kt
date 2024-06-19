@@ -1,22 +1,24 @@
 package com.example.movieapp.presentation.movie_detail
 
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
-import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.common.Constant.PARAM_MOVIE_ID
 import com.example.movieapp.common.Resource
 import com.example.movieapp.domain.model.MovieDetails
-import com.example.movieapp.domain.use_case.GetMovieById
+import com.example.movieapp.domain.use_case.MoviesUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.json.JSONArray
+import org.json.JSONObject
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val getMovieByIdUseCase: GetMovieById,
+    private val moviesUseCases: MoviesUseCases,
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
@@ -30,7 +32,7 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun getMovie(movie_id: String) {
-        getMovieByIdUseCase(movie_id).onEach { result ->
+        moviesUseCases.getMovieById(movie_id).onEach { result ->
             when(result) {
                 is Resource.Success -> {
                     _state.value = MovieDetailState(movie = result.data)
@@ -46,6 +48,20 @@ class MovieDetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 }
+
+    fun JSONObject.toMap(): Map<String, *> = keys().asSequence().associateWith {
+        when (val value = this[it])
+        {
+            is JSONArray ->
+            {
+                val map = (0 until value.length()).associate { Pair(it.toString(), value[it]) }
+                JSONObject(map).toMap().values.toList()
+            }
+            is JSONObject -> value.toMap()
+            JSONObject.NULL -> null
+            else            -> value
+        }
+    }
 
 data class MovieDetailState (
     val isLoading: Boolean = false,

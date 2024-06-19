@@ -6,6 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +17,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -39,8 +46,10 @@ import com.example.movieapp.common.Dimens.ScreenPadding1
 import com.example.movieapp.common.Dimens.ScreenPadding2
 import com.example.movieapp.common.Dimens.TextPadding1
 import com.example.movieapp.common.Services
+import com.example.movieapp.presentation.movie_detail.component.GenreItem
 import com.example.movieapp.presentation.ui.theme.LightBlack
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MovieDetailScreen(
     viewModel: MovieDetailViewModel = hiltViewModel()
@@ -103,6 +112,16 @@ fun MovieDetailScreen(
                             text = "Language : ${state.movie.originalLanguage}",
                             style = MaterialTheme.typography.bodySmall,
                         )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        FlowRow(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                        ) {
+                            state.movie.genres?.forEach {
+                                GenreItem(genre = it.name)
+                            }
+                        }
                     }
                 }
                 Spacer(modifier = Modifier.height(12.dp))
